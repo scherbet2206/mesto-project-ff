@@ -1,3 +1,10 @@
+import "../pages/index.css"
+import { initialCards } from "./cards.js";
+import imgAvatar from "../images/avatar.jpg";
+
+const profileImage = document.querySelector(".profile__image");
+profileImage.style.backgroundImage = `url(${imgAvatar})`;
+
 const cardTemplate = document.querySelector("#card-template").content;
 const container = document.querySelector(".content");
 const addButton = container.querySelector(".profile__add-button");
