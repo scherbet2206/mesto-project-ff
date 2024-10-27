@@ -2,7 +2,7 @@ import "../pages/index.css";
 import { initialCards } from "./cards.js";
 import imgAvatar from "../images/avatar.jpg";
 import { createCard, likeCard, deleteCard, openFullSizeImage } from "./card.js";
-import { openPopup, animatePopup } from "./modal.js";
+import { openPopup, closePopup, animatePopup } from "./modal.js";
 
 const container = document.querySelector(".content");
 const cardsContainer = container.querySelector(".places__list");
@@ -38,26 +38,13 @@ initialCards.forEach(function (item) {
   );
 });
 
-profileEditButton.addEventListener("click", function (evt) {
-  openPopup(popupEditProfile);
-  nameInputPopup.value = profileTitle.textContent;
-  jobInputPopup.value = profileDescription.textContent;
-  formEditProfile.addEventListener("submit", handleFormEditProfileSubmit);
-});
-
 function handleFormEditProfileSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInputPopup.value;
   profileDescription.textContent = jobInputPopup.value;
   formEditProfile.reset();
-  popupEditProfile.classList.remove("popup_is-opened");
-  formEditProfile.removeEventListener("submit", handleFormEditProfileSubmit);
+  closePopup(popupEditProfile);
 }
-
-newCardButton.addEventListener("click", function (evt) {
-  openPopup(popupNewCard);
-  formNewCard.addEventListener("submit", handleFormNewCardSubmit);
-});
 
 function handleFormNewCardSubmit(evt) {
   const nameCardInput = popupNewCard.querySelector(
@@ -76,6 +63,18 @@ function handleFormNewCardSubmit(evt) {
 
   evt.preventDefault();
   formNewCard.reset();
-  popupNewCard.classList.remove("popup_is-opened");
-  formNewCard.removeEventListener("submit", handleFormNewCardSubmit);
+  closePopup(popupNewCard);
 }
+
+profileEditButton.addEventListener("click", function (evt) {
+  openPopup(popupEditProfile);
+  nameInputPopup.value = profileTitle.textContent;
+  jobInputPopup.value = profileDescription.textContent;
+});
+
+formEditProfile.addEventListener("submit", handleFormEditProfileSubmit);
+
+newCardButton.addEventListener("click", function (evt) {
+  openPopup(popupNewCard);
+});
+formNewCard.addEventListener("submit", handleFormNewCardSubmit);
