@@ -28,7 +28,7 @@ const popupNewCard = document.querySelector(".popup_type_new-card");
 const newCardButton = profileSection.querySelector(".profile__add-button");
 const formNewCard = popupNewCard.querySelector(".popup__form");
 
-allPopups.forEach(function (popup){
+allPopups.forEach(function (popup) {
   animatePopup(popup);
 });
 

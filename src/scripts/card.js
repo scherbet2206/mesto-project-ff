@@ -47,4 +47,4 @@ function openFullSizeImage(event) {
   captionImagePopup.textContent = imageCaption.textContent;
 }
 
-export { createCard, likeCard, deleteCard, openFullSizeImage};
+export { createCard, likeCard, deleteCard, openFullSizeImage };

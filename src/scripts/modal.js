@@ -35,7 +35,7 @@ function handleOutsideClick(evt, popup) {
 }
 
 function animatePopup(popup) {
-    popup.classList.add("popup_is-animated");
+  popup.classList.add("popup_is-animated");
 }
 
 export { openPopup, animatePopup };
