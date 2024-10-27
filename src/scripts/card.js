@@ -5,20 +5,19 @@ function createCard(title, linkImage, deleteCard, likeCard, openFullSizeImage) {
   const cardElement = cardTemplate
     .querySelector(".places__item")
     .cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image");
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+  const likeButton = cardElement.querySelector(".card__like-button");
+  const openFullSizeImageButton = cardElement.querySelector(".card__image");
 
   cardElement.querySelector(".card__title").textContent = title;
-  const cardImage = cardElement.querySelector(".card__image");
   cardImage.src = linkImage;
   cardImage.alt = title;
 
-  const deleteButton = cardElement.querySelector(".card__delete-button");
   deleteButton.addEventListener("click", deleteCard);
-
-  const likeButton = cardElement.querySelector(".card__like-button");
   likeButton.addEventListener("click", likeCard);
-
-  const openFullSizeImageButton = cardElement.querySelector(".card__image");
   openFullSizeImageButton.addEventListener("click", openFullSizeImage);
+
   return cardElement;
 }
 
@@ -40,9 +39,9 @@ function openFullSizeImage(event) {
   const imageCard = card.querySelector(".card__image");
   const imageCaption = card.querySelector(".card__title");
   const popupFullSizeImage = document.querySelector(".popup_type_image");
-  openPopup(popupFullSizeImage);
   const imagePopup = popupFullSizeImage.querySelector(".popup__image");
   const captionImagePopup = popupFullSizeImage.querySelector(".popup__caption");
+  openPopup(popupFullSizeImage);
   imagePopup.src = imageCard.src;
   captionImagePopup.textContent = imageCaption.textContent;
 }
