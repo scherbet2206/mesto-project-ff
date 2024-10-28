@@ -1,7 +1,7 @@
 import "../pages/index.css";
 import { initialCards } from "./cards.js";
 import imgAvatar from "../images/avatar.jpg";
-import { createCard, likeCard, deleteCard, openFullSizeImage } from "./card.js";
+import { createCard, likeCard, deleteCard } from "./card.js";
 import { openPopup, closePopup, animatePopup } from "./modal.js";
 
 const container = document.querySelector(".content");
@@ -64,6 +64,19 @@ function handleFormNewCardSubmit(evt) {
   evt.preventDefault();
   formNewCard.reset();
   closePopup(popupNewCard);
+}
+
+function openFullSizeImage(event) {
+  const targetElement = event.target;
+  const card = targetElement.closest(".card");
+  const imageCard = card.querySelector(".card__image");
+  const imageCaption = card.querySelector(".card__title");
+  const popupFullSizeImage = document.querySelector(".popup_type_image");
+  const imagePopup = popupFullSizeImage.querySelector(".popup__image");
+  const captionImagePopup = popupFullSizeImage.querySelector(".popup__caption");
+  openPopup(popupFullSizeImage);
+  imagePopup.src = imageCard.src;
+  captionImagePopup.textContent = imageCaption.textContent;
 }
 
 profileEditButton.addEventListener("click", function (evt) {

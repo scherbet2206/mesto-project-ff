@@ -1,5 +1,3 @@
-import { openPopup } from "./modal";
-
 function createCard(title, linkImage, deleteCard, likeCard, openFullSizeImage) {
   const cardTemplate = document.querySelector("#card-template").content;
   const cardElement = cardTemplate
@@ -33,17 +31,4 @@ function deleteCard(event) {
   deletedCard.remove();
 }
 
-function openFullSizeImage(event) {
-  const targetElement = event.target;
-  const card = targetElement.closest(".card");
-  const imageCard = card.querySelector(".card__image");
-  const imageCaption = card.querySelector(".card__title");
-  const popupFullSizeImage = document.querySelector(".popup_type_image");
-  const imagePopup = popupFullSizeImage.querySelector(".popup__image");
-  const captionImagePopup = popupFullSizeImage.querySelector(".popup__caption");
-  openPopup(popupFullSizeImage);
-  imagePopup.src = imageCard.src;
-  captionImagePopup.textContent = imageCaption.textContent;
-}
-
-export { createCard, likeCard, deleteCard, openFullSizeImage };
+export { createCard, likeCard, deleteCard };
