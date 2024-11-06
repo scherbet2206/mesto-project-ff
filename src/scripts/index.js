@@ -3,6 +3,7 @@ import { initialCards } from "./cards.js";
 import imgAvatar from "../images/avatar.jpg";
 import { createCard, likeCard, deleteCard } from "./card.js";
 import { openPopup, closePopup, animatePopup } from "./modal.js";
+import { enableValidation, clearValidation } from "./validation.js";
 
 const container = document.querySelector(".content");
 const cardsContainer = container.querySelector(".places__list");
@@ -22,6 +23,16 @@ const profileDescription = profileSection.querySelector(
 );
 const profileEditButton = profileSection.querySelector(".profile__edit-button");
 const profileImage = profileSection.querySelector(".profile__image");
+
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
 profileImage.style.backgroundImage = `url(${imgAvatar})`;
 
 const popupNewCard = document.querySelector(".popup_type_new-card");
@@ -83,6 +94,7 @@ function openFullSizeImage(event) {
 }
 
 profileEditButton.addEventListener("click", function (evt) {
+  clearValidation(popupEditProfile, validationConfig);
   openPopup(popupEditProfile);
   nameInputPopup.value = profileTitle.textContent;
   jobInputPopup.value = profileDescription.textContent;
@@ -91,6 +103,12 @@ profileEditButton.addEventListener("click", function (evt) {
 formEditProfile.addEventListener("submit", handleFormEditProfileSubmit);
 
 newCardButton.addEventListener("click", function (evt) {
+  clearValidation(popupNewCard, validationConfig);
   openPopup(popupNewCard);
+  nameCardInput.value = "";
+  linkCardInput.value = "";
 });
+
 formNewCard.addEventListener("submit", handleFormNewCardSubmit);
+
+enableValidation(validationConfig);
