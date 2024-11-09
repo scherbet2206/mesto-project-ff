@@ -92,7 +92,6 @@ function handleFormEditAvatar(evt) {
   saveNewAvatarButton.textContent = "Сохранение...";
   editAvatar(linkAvatarInputPopup.value)
     .then((res) => {
-      console.log(res.avatar);
       profileImage.style.backgroundImage = `url(${res.avatar})`;
       formEditAvatar.reset();
       closePopup(popupEditAvatar);
@@ -106,8 +105,8 @@ function handleFormEditAvatar(evt) {
 }
 
 function handleFormNewCardSubmit(evt) {
-  let newCardName = nameCardInput.value;
-  let newCardLink = linkCardInput.value;
+  const newCardName = nameCardInput.value;
+  const newCardLink = linkCardInput.value;
   evt.preventDefault();
   saveNewCardrButton.textContent = "Сохранение...";
   createNewCard(newCardName, newCardLink)
