@@ -1,3 +1,10 @@
+.card__like-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .card__like-button {
   width: 21px;
   height: 18px;
