@@ -35,6 +35,6 @@
   min-height: 30px;
 }
 
-.popup__input-error_active {
+.popup__error_visible {
   opacity: 1;
 }
